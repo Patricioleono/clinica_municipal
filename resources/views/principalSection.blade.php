@@ -83,10 +83,14 @@
                         <h5 class="justify-content-center mt-3 lead">Reserva Tu Hora</h5>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button type="button" class="btn btn-outline-primary fst-italic w-100">Reservar Hora</button>
+                        <button type="button" class="btn btn-outline-primary fst-italic w-100" data-bs-toggle="modal" data-bs-target="#reservarHora">
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Reservar Hora
+                        </button>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button type="button" class="btn btn-outline-success fst-italic w-100">Modificar Hora</button>
+                        <button type="button" class="btn btn-outline-success fst-italic w-100">
+                            <i class="fa fa-pencil-square" aria-hidden="true"></i> Modificar Hora
+                        </button>
                     </div>
                     <div class="text-dark mt-4">
                         <hr>
@@ -95,7 +99,9 @@
                         <h5 class="justify-content-center mt-3 lead">Servicio Online</h5>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button type="button" class="btn btn-outline-primary fst-italic w-100">Consultas Generales</button>
+                        <button type="button" class="btn btn-outline-primary fst-italic w-100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i> Consultas Generales
+                        </button>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
                         <button type="button" class="btn btn-outline-success fst-italic w-100">Revision Examenes</button>
@@ -250,6 +256,78 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('modals')
+    <!-- Modal -->
+    <div class="modal fade" id="reservarHora" tabindex="-1" aria-labelledby="reservarHora" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="reservarHora">Solicitud de Hora Medica</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputNombre" class="form-label">Nombre Completo:</label>
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputCorreo" class="form-label">Correo:</label>
+                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ:informatica@chilechico.cl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10 mb-3">
+                                <label for="inputEspecialidad" class="form-label">Especialidad:</label>
+                                <select class="form-select" aria-label="Default select example" id="inputEspecialidad">
+                                    <option selected>Selecciona una Especialidad</option>
+                                    <option value="1">Odontologia</option>
+                                    <option value="2">Imagenologia</option>
+                                    <option value="3">Consulta General</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputFecha" class="form-label">Seleccione Fecha:</label>
+                                    <input type="datetime-local" class="form-control" id="inputFecha" aria-describedby="inputFecha">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputComentario" class="form-label">Descripcion/Comentario:</label>
+                                    <textarea class="form-control" aria-label="With textarea" id="inputComentario"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Solicitar Hora Medica</button>
+                </div>
             </div>
         </div>
     </div>
