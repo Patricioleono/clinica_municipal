@@ -83,7 +83,7 @@
                         <h5 class="justify-content-center mt-3 lead">Reserva Tu Hora</h5>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button type="button" class="btn btn-outline-primary fst-italic w-100" data-bs-toggle="modal" data-bs-target="#reservarHora">
+                        <button type="button" class="btn btn-outline-primary fst-italic w-100" data-bs-toggle="modal" data-bs-target="#reservarHora" id="buttonReservarHora">
                             <i class="fa fa-calendar" aria-hidden="true"></i> Reservar Hora
                         </button>
                     </div>
@@ -264,6 +264,7 @@
 @section('modals')
     <!-- Modal -->
     <div class="modal fade" id="reservarHora" tabindex="-1" aria-labelledby="reservarHora" aria-hidden="true">
+        {{ csrf_field() }}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -295,10 +296,10 @@
                             <div class="col-10 mb-3">
                                 <label for="inputEspecialidad" class="form-label">Especialidad:</label>
                                 <select class="form-select" aria-label="Default select example" id="inputEspecialidad">
-                                    <option selected>Selecciona una Especialidad</option>
-                                    <option value="1">Odontologia</option>
-                                    <option value="2">Imagenologia</option>
-                                    <option value="3">Consulta General</option>
+                                    <option selected value = "0">Selecciona una Especialidad</option>
+                                    <option value= "1">Odontologia</option>
+                                    <option value= "2">Imagenologia</option>
+                                    <option value= "3">Consulta General</option>
                                 </select>
                             </div>
                         </div>
@@ -326,7 +327,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Solicitar Hora Medica</button>
+                    <button type="button" class="btn btn-primary" id="buttonEnviarSolicitud">Solicitar Hora Medica</button>
                 </div>
             </div>
         </div>
@@ -335,7 +336,7 @@
 
 @section('footer')
     <div class="container mt-4 mb-4">
-        <div class="row ">
+        <div class="row">
             <div class="col-3">
                 <img src="" alt="Logo">
             </div>
@@ -389,4 +390,60 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#buttonReservarHora').on('click', function(){
+                limpiarForm();
+            })
+
+            $('#buttonEnviarSolicitud').on('click', function(){
+                let nombre = $('#inputNombre').val();
+                let correo = $('#inputCorreo').val();
+                let especialidad = $('#inputEspecialidad').val();
+                let fechaCompleta = $('#inputFecha').val();
+                let comentario = $('#inputComentario').val();
+                let fecha = fechaCompleta.split('T')[0];
+                let hora = fechaCompleta.split('T')[1];
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/sendMail',
+                    data: {
+                            nombre: nombre,
+                            correo: correo,
+                            especialidad: especialidad,
+                            fecha: fecha,
+                            hora: hora,
+                            comentario: comentario
+                        },
+                    dataType: 'JSON',
+                    success: function(result){
+
+                        console.log(result);
+                    }
+                });
+            })
+
+            function limpiarForm(){
+               let inputNombre = $('#inputNombre').val();
+               let inputCorreo = $('#inputCorreo').val();
+               let inputEspecialidad = $('#inputEspecialidad').val();
+               let inputFecha = $('#inputFecha').val();
+               let inputComentario = $('#inputComentario').val();
+
+               if(inputNombre.length > 0 || inputCorreo.length > 0 || inputEspecialidad !== 0 || inputFecha.length > 0 || inputComentario.length > 0){
+                   $('#inputNombre').val('');
+                   $('#inputCorreo').val('');
+                   $('#inputEspecialidad').val(0);
+                   $('#inputFecha').val('');
+                   $('#inputComentario').val('');
+               }
+            }
+
+
+        });
+    </script>
 @endsection
