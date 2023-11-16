@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendingMail;
 use App\Notifications\SoliciteHours;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
+
 
 class MailController extends Controller
 {
@@ -26,9 +29,9 @@ class MailController extends Controller
            'hora' => $hora,
            'descripcion' => $descripcion
        );
-        $this->sendMail($dataTomarHora);
+        $response = $this->sendMail($dataTomarHora);
 
-        return response()->json([$dataTomarHora]);
+        return $response;
     }
 
     protected function sendMail($data){
@@ -40,6 +43,10 @@ class MailController extends Controller
           'hora' => $data['hora'],
           'descripcion' => $data['descripcion']
       ]);
-        \Illuminate\Support\Facades\Mail::to('informatica@chilechico.cl')->send(new \App\Mail\SendingMail($newHour));
+      //Cambiar al correo de la clinica
+        Mail::to('informatica@chilechico.cl')->send(new SendingMail($newHour));
+
+        return response()->json(['status' => 200]);
     }
+
 }

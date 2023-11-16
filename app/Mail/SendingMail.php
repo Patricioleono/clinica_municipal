@@ -19,7 +19,7 @@ class SendingMail extends Mailable
     //Inyectar variables que nos llegan
     public function __construct(private array $newHour)
     {
-        //
+
     }
 
     /**
@@ -28,7 +28,7 @@ class SendingMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Sending Mail',
+            subject: 'Solicitud Hora Medica',
         );
     }
 
@@ -40,7 +40,14 @@ class SendingMail extends Mailable
         return new Content(
             //ruta, View/carpetaDestino/nombreArchivo
             view: 'mail.template',
-            with: ['name' => $this->newHour]
+            with: [
+                    'nombre' => $this->newHour['nombre'],
+                    'correo' => $this->newHour['correo'],
+                    'especialidad' => $this->newHour['especialidad'],
+                    'fecha' => $this->newHour['fecha'],
+                    'hora' => $this->newHour['hora'],
+                    'descripcion' => $this->newHour['descripcion']
+            ]
         );
     }
 
