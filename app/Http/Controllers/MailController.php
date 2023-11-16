@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendingMail;
-use App\Notifications\SoliciteHours;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
@@ -37,15 +36,7 @@ class MailController extends Controller
     }
 
     protected function sendMail($data){
-//      $newHour = ([
-//          'nombre' => $data['nombre'],
-//          'correo' => $data['correo'],
-//          'especialidad' => $data['especialidad'],
-//          'fecha' => $data['fecha'],
-//          'hora' => $data['hora'],
-//          'descripcion' => $data['descripcion'],
-//          'telefono' => $data['telefono']
-//      ]);
+
       //Cambiar al correo de la clinica
         Mail::to('informatica@chilechico.cl')->send(new SendingMail($data));
 
