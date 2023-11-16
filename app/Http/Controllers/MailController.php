@@ -40,6 +40,6 @@ class MailController extends Controller
           'hora' => $data['hora'],
           'descripcion' => $data['descripcion']
       ]);
-
+        \Illuminate\Support\Facades\Mail::to('informatica@chilechico.cl')->send(new \App\Mail\SendingMail($newHour));
     }
 }
