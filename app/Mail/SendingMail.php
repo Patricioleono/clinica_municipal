@@ -46,7 +46,8 @@ class SendingMail extends Mailable
                     'especialidad' => $this->newHour['especialidad'],
                     'fecha' => $this->newHour['fecha'],
                     'hora' => $this->newHour['hora'],
-                    'descripcion' => $this->newHour['descripcion']
+                    'descripcion' => $this->newHour['descripcion'],
+                    'telefono' => $this->newHour['telefono']
             ]
         );
     }

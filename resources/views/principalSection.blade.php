@@ -287,7 +287,16 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputCorreo" class="form-label">Correo:</label>
-                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ:informatica@chilechico.cl">
+                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ: informatica@chilechico.cl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputTelefono" class="form-label">Telefono:</label>
+                                    <input type="number" class="form-control" id="inputTelefono" aria-describedby="inputTelefono" placeholder="EJ: +56937213799">
                                 </div>
                             </div>
                         </div>
@@ -297,9 +306,9 @@
                                 <label for="inputEspecialidad" class="form-label">Especialidad:</label>
                                 <select class="form-select" aria-label="Default select example" id="inputEspecialidad">
                                     <option selected value = "0">Selecciona una Especialidad</option>
-                                    <option value= "1">Odontologia</option>
-                                    <option value= "2">Imagenologia</option>
-                                    <option value= "3">Consulta General</option>
+                                    <option value= "Odontologia">Odontologia</option>
+                                    <option value= "Imagenologia">Imagenologia</option>
+                                    <option value= "Consulta General">Consulta General</option>
                                 </select>
                             </div>
                         </div>
@@ -316,7 +325,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-10">
                                 <div class="mb-3">
-                                    <label for="inputComentario" class="form-label">Descripcion/Comentario:</label>
+                                    <label for="inputComentario" class="form-label">Motivo de la Consulta:</label>
                                     <textarea class="form-control" aria-label="With textarea" id="inputComentario"></textarea>
                                 </div>
                             </div>
@@ -404,9 +413,11 @@
                 let correo = $('#inputCorreo').val();
                 let especialidad = $('#inputEspecialidad').val();
                 let fechaCompleta = $('#inputFecha').val();
-                let comentario = $('#inputComentario').val();
-                let fecha = fechaCompleta.split('T')[0];
+                let descripcion = $('#inputComentario').val();
+                let telefono = $('#inputTelefono').val();
+                let segmentoFecha = fechaCompleta.split('T')[0];
                 let hora = fechaCompleta.split('T')[1];
+                let fecha = segmentoFecha.split('-').reverse().join('-');
 
                 $.ajax({
                     type: 'GET',
@@ -417,11 +428,12 @@
                             especialidad: especialidad,
                             fecha: fecha,
                             hora: hora,
-                            comentario: comentario
+                            descripcion: descripcion,
+                            telefono: telefono
                         },
                     dataType: 'JSON',
                     success: function(result){
-
+                        //sweet alert como mensaje
                         console.log(result);
                     }
                 });

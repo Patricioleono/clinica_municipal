@@ -19,6 +19,7 @@ class MailController extends Controller
        $especialidad = $request->get('especialidad');
        $fecha = $request->get('fecha');
        $descripcion = $request->get('descripcion');
+       $telefono = $request->get('telefono');
        $hora = $request->get('hora');
 
        $dataTomarHora = array(
@@ -27,7 +28,8 @@ class MailController extends Controller
            'especialidad' => $especialidad,
            'fecha' => $fecha,
            'hora' => $hora,
-           'descripcion' => $descripcion
+           'descripcion' => $descripcion,
+           'telefono' => $telefono
        );
         $response = $this->sendMail($dataTomarHora);
 
@@ -35,16 +37,17 @@ class MailController extends Controller
     }
 
     protected function sendMail($data){
-      $newHour = ([
-          'nombre' => $data['nombre'],
-          'correo' => $data['correo'],
-          'especialidad' => $data['especialidad'],
-          'fecha' => $data['fecha'],
-          'hora' => $data['hora'],
-          'descripcion' => $data['descripcion']
-      ]);
+//      $newHour = ([
+//          'nombre' => $data['nombre'],
+//          'correo' => $data['correo'],
+//          'especialidad' => $data['especialidad'],
+//          'fecha' => $data['fecha'],
+//          'hora' => $data['hora'],
+//          'descripcion' => $data['descripcion'],
+//          'telefono' => $data['telefono']
+//      ]);
       //Cambiar al correo de la clinica
-        Mail::to('informatica@chilechico.cl')->send(new SendingMail($newHour));
+        Mail::to('informatica@chilechico.cl')->send(new SendingMail($data));
 
         return response()->json(['status' => 200]);
     }
