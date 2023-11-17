@@ -264,7 +264,6 @@
 @section('modals')
     <!-- Modal -->
     <div class="modal fade" id="reservarHora" tabindex="-1" aria-labelledby="reservarHora" aria-hidden="true">
-        {{ csrf_field() }}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -278,7 +277,7 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputNombre" class="form-label">Nombre Completo:</label>
-                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal">
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal" required>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +286,16 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputCorreo" class="form-label">Correo:</label>
-                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ:informatica@chilechico.cl">
+                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ: informatica@chilechico.cl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputTelefono" class="form-label">Telefono:</label>
+                                    <input type="number" class="form-control" id="inputTelefono" aria-describedby="inputTelefono" placeholder="EJ: +56937213799" required>
                                 </div>
                             </div>
                         </div>
@@ -297,9 +305,9 @@
                                 <label for="inputEspecialidad" class="form-label">Especialidad:</label>
                                 <select class="form-select" aria-label="Default select example" id="inputEspecialidad">
                                     <option selected value = "0">Selecciona una Especialidad</option>
-                                    <option value= "1">Odontologia</option>
-                                    <option value= "2">Imagenologia</option>
-                                    <option value= "3">Consulta General</option>
+                                    <option value= "Odontologia">Odontologia</option>
+                                    <option value= "Imagenologia">Imagenologia</option>
+                                    <option value= "Consulta General">Consulta General</option>
                                 </select>
                             </div>
                         </div>
@@ -308,7 +316,7 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputFecha" class="form-label">Seleccione Fecha:</label>
-                                    <input type="datetime-local" class="form-control" id="inputFecha" aria-describedby="inputFecha">
+                                    <input type="datetime-local" class="form-control" id="inputFecha" aria-describedby="inputFecha" required>
                                 </div>
                             </div>
                         </div>
@@ -316,7 +324,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-10">
                                 <div class="mb-3">
-                                    <label for="inputComentario" class="form-label">Descripcion/Comentario:</label>
+                                    <label for="inputComentario" class="form-label">Motivo de la Consulta:</label>
                                     <textarea class="form-control" aria-label="With textarea" id="inputComentario"></textarea>
                                 </div>
                             </div>
@@ -326,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="buttonCerrarModal">Cerrar</button>
                     <button type="button" class="btn btn-primary" id="buttonEnviarSolicitud">Solicitar Hora Medica</button>
                 </div>
             </div>
@@ -394,35 +402,48 @@
 
 @section('script')
     <script>
+
         $(document).ready(function(){
             $('#buttonReservarHora').on('click', function(){
                 limpiarForm();
             })
 
             $('#buttonEnviarSolicitud').on('click', function(){
+                bloquearPantalla();
+
+
                 let nombre = $('#inputNombre').val();
                 let correo = $('#inputCorreo').val();
                 let especialidad = $('#inputEspecialidad').val();
                 let fechaCompleta = $('#inputFecha').val();
-                let comentario = $('#inputComentario').val();
-                let fecha = fechaCompleta.split('T')[0];
+                let descripcion = $('#inputComentario').val();
+                let telefono = $('#inputTelefono').val();
+                let segmentoFecha = fechaCompleta.split('T')[0];
                 let hora = fechaCompleta.split('T')[1];
+                let fecha = segmentoFecha.split('-').reverse().join('-');
+                let resultadoValidacion = validationForm(nombre, correo, especialidad, telefono, hora);
 
                 $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     url: '/sendMail',
                     data: {
+                            "_token": "{{ csrf_token() }}",
                             nombre: nombre,
                             correo: correo,
                             especialidad: especialidad,
                             fecha: fecha,
                             hora: hora,
-                            comentario: comentario
+                            descripcion: descripcion,
+                            telefono: telefono,
+                            validacionFront: resultadoValidacion
                         },
                     dataType: 'JSON',
                     success: function(result){
 
-                        console.log(result);
+                        (result.status === 200) ? $("#reservarHora").modal("hide") : console.log(result)
+
+                        desbloquearPantalla();
+                        leonAlert(result)
                     }
                 });
             })

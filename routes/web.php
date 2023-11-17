@@ -19,5 +19,5 @@ Route::get('/', function () {
 
 
 Route::controller(MailController::class)->group( function() {
-    Route::get('/sendMail', 'mailProcess');
+    Route::post('/sendMail', 'mailProcess');
 });
