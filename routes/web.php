@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\MailController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +21,8 @@ Route::get('/', function () {
 
 Route::controller(MailController::class)->group( function() {
     Route::post('/sendMail', 'mailProcess');
+});
+
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/clinica/login', 'index');
 });
