@@ -264,7 +264,6 @@
 @section('modals')
     <!-- Modal -->
     <div class="modal fade" id="reservarHora" tabindex="-1" aria-labelledby="reservarHora" aria-hidden="true">
-        {{ csrf_field() }}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -278,7 +277,7 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputNombre" class="form-label">Nombre Completo:</label>
-                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal">
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal" required>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +295,7 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputTelefono" class="form-label">Telefono:</label>
-                                    <input type="number" class="form-control" id="inputTelefono" aria-describedby="inputTelefono" placeholder="EJ: +56937213799">
+                                    <input type="number" class="form-control" id="inputTelefono" aria-describedby="inputTelefono" placeholder="EJ: +56937213799" required>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +316,7 @@
                             <div class="col-10">
                                 <div class="mb-3">
                                     <label for="inputFecha" class="form-label">Seleccione Fecha:</label>
-                                    <input type="datetime-local" class="form-control" id="inputFecha" aria-describedby="inputFecha">
+                                    <input type="datetime-local" class="form-control" id="inputFecha" aria-describedby="inputFecha" required>
                                 </div>
                             </div>
                         </div>
@@ -335,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="buttonCerrarModal">Cerrar</button>
                     <button type="button" class="btn btn-primary" id="buttonEnviarSolicitud">Solicitar Hora Medica</button>
                 </div>
             </div>
@@ -403,12 +402,16 @@
 
 @section('script')
     <script>
+
         $(document).ready(function(){
             $('#buttonReservarHora').on('click', function(){
                 limpiarForm();
             })
 
             $('#buttonEnviarSolicitud').on('click', function(){
+                bloquearPantalla();
+
+
                 let nombre = $('#inputNombre').val();
                 let correo = $('#inputCorreo').val();
                 let especialidad = $('#inputEspecialidad').val();
@@ -418,23 +421,29 @@
                 let segmentoFecha = fechaCompleta.split('T')[0];
                 let hora = fechaCompleta.split('T')[1];
                 let fecha = segmentoFecha.split('-').reverse().join('-');
+                let resultadoValidacion = validationForm(nombre, correo, especialidad, telefono, hora);
 
                 $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     url: '/sendMail',
                     data: {
+                            "_token": "{{ csrf_token() }}",
                             nombre: nombre,
                             correo: correo,
                             especialidad: especialidad,
                             fecha: fecha,
                             hora: hora,
                             descripcion: descripcion,
-                            telefono: telefono
+                            telefono: telefono,
+                            validacionFront: resultadoValidacion
                         },
                     dataType: 'JSON',
                     success: function(result){
-                        //sweet alert como mensaje
-                        console.log(result);
+
+                        (result.status === 200) ? $("#reservarHora").modal("hide") : console.log(result)
+
+                        desbloquearPantalla();
+                        leonAlert(result)
                     }
                 });
             })

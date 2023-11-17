@@ -13,7 +13,8 @@
         "mailersend/laravel-driver": "^2.3",
         "symfony/http-client": "^6.3",
         "symfony/mailgun-mailer": "^6.3",
-        "symfony/postmark-mailer": "^6.3"
+        "symfony/postmark-mailer": "^6.3",
+      "ext-mysql_xdevapi": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
