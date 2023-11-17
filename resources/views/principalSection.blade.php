@@ -1,48 +1,7 @@
 @extends('layouts.app')
 
-@section('navbar')
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand me-5" href="#"><img src="" alt="Logo Clinica"></a>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Servicios
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                            <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                            <hr>
-                            <li><a class="dropdown-item" href="#">Servicio 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Especialidades
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                            <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                            <hr>
-                            <li><a class="dropdown-item" href="#">Servicio 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Informacion Importante
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                            <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                            <hr>
-                            <li><a class="dropdown-item" href="#">Servicio 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@section('header')
+    @include('includes.header')
 @endsection
 
 @section('contentCarousel')
@@ -343,61 +302,7 @@
 @endsection
 
 @section('footer')
-    <div class="container mt-4 mb-4">
-        <div class="row">
-            <div class="col-3">
-                <img src="" alt="Logo">
-            </div>
-            <div class="col-3">
-                <h6>Acerca de Clinica Municipal</h6>
-                <ul class="list-group list-group-flush mt-2">
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary" href="#">
-                        Underline opacity 0
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        Underline opacity 0
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        Underline opacity 0
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        Underline opacity 0
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        Underline opacity 0
-                    </a>
-
-                </ul>
-            </div>
-            <div class="col-3">
-                <h6>Contacto</h6>
-                <ul class="list-group list-group-flush mt-2">
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        <i class="fa fa-phone-square" aria-hidden="true"></i> <em>+672411893</em>
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="#">
-                        <i class="fa fa-envelope" aria-hidden="true"></i> <em>clinicadesalud@chilechico.cl</em>
-                    </a>
-                </ul>
-
-            </div>
-            <div class="col-3">
-                <h6>Redes Sociales</h6>
-                <ul class="list-group list-group-flush mt-2">
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://www.facebook.com/ilustremunicipalidadchilechico" target="_blank">
-                        <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://twitter.com/MuniChileChico" target="_blank">
-                        <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter
-                    </a>
-                    <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://www.instagram.com/municipalidadchilechico/" target="_blank">
-                        <i class="fa fa-instagram" aria-hidden="true"></i> Instagram
-                    </a>
-                </ul>
-
-            </div>
-        </div>
-    </div>
+    @include('includes.footer')
 @endsection
 
 @section('script')
@@ -439,9 +344,7 @@
                         },
                     dataType: 'JSON',
                     success: function(result){
-
                         (result.status === 200) ? $("#reservarHora").modal("hide") : console.log(result)
-
                         desbloquearPantalla();
                         leonAlert(result)
                     }
