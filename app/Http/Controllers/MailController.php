@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use mysql_xdevapi\Exception;
+use Exception;
 
 
 class MailController extends Controller
