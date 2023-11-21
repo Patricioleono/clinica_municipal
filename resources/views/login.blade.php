@@ -38,7 +38,7 @@
                 
                 $.ajax({
                     type: 'POST',
-                    url: 'clinica/login/ingreso',
+                    url: '/clinica/ingreso',
                     data: { 
                         _token: "{{ csrf_token() }}",
                         email: $('#email').val(),
@@ -48,7 +48,8 @@
                     dataType: 'JSON',
                     success: function(result){
                         //cambio de vista hacia el dashboard
-                        (result.status === 200) ? leonAlert(result) : console.log(result)
+                        console.log(result)
+                        //(result.status === 200) ? leonAlert(result) : console.log(result)
                     }
                 })
             });

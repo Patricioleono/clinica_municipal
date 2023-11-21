@@ -26,3 +26,7 @@ Route::controller(MailController::class)->group( function() {
 Route::controller(LoginController::class)->group(function() {
     Route::get('/clinica/login', 'index');
 });
+
+Route::controller(LoginController::class)->group(function() {
+    Route::post('/clinica/ingreso', 'login');
+});
