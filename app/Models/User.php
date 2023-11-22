@@ -23,6 +23,8 @@ class User extends Authenticatable implements JWTSubject
         'sis_nombreCompleto',
         'sis_usuario',
         'sis_password',
+        'sis_tokenCreado',
+        'sis_tokenTermino'
     ];
 
     /**
@@ -41,7 +43,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array<string, string>
      */
     protected $casts = [
-        'sis_tokenCreado' => 'datetime',
+        'sis_tokenCreado' => 'string',
         'password' => 'hashed',
     ];
 

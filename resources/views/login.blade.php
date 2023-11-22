@@ -29,7 +29,9 @@
             $('#email').focus();
 
             $("#enviarForm").click(function(e) {
+                bloquearPantalla();
                 e.preventDefault();
+                
 
                 let email = $('#email').val();
                 let password = $('#password').val();
@@ -47,9 +49,13 @@
                     },
                     dataType: 'JSON',
                     success: function(result){
-                        //cambio de vista hacia el dashboard
-                        console.log(result)
-                        //(result.status === 200) ? leonAlert(result) : console.log(result)
+                        if(result.id){
+                            //dashboard involucra mantenedor perfiles, mantenedor noticias, inventario a nivel general
+                            window.location.href = '/clinica/dashboard';
+                        }else{
+                            leonAlert(result);
+                        }
+                        desbloquearPantalla();                        
                     }
                 })
             });

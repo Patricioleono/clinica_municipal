@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('sis_nombreCompleto');
             $table->string('sis_usuario')->unique();
             $table->string('sis_password');
-            $table->datetime('sis_tokenCreado')->nullable();
-            $table->datetime('sis_tokenTermino')->nullable();
+            $table->string('sis_tokenCreado');
+            $table->datetime('sis_tokenFecha');
         });
     }
 
