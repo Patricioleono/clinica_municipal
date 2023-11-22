@@ -40,6 +40,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    var regeX = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
     function bloquearPantalla(){
         $('#bloquea').removeClass('d-none')
     }
@@ -48,7 +50,6 @@
     }
 
     function validationForm(nombre, correo, especialidad, telefono, hora){
-        let regeX = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
         let revisarCorreo = regeX.exec(correo);
 
         if(nombre.length === 0 || correo.length === 0 || especialidad === 0 || telefono.toString().length === 0 || hora.toString().length === 0){
@@ -71,6 +72,15 @@
             return {'status': 200}
         }
 
+    }
+    function validationLogIn(email, pass){
+        let validarCorreo = regeX.exec(email);
+        if(validarCorreo === null || validarCorreo == undefined){
+            return {'status': 'fcorreo'}
+        }else if(pass.length === 0 || pass.length < 3){
+            return {'status': 'fpasword'}
+        }
+        return {'status': 200}
     }
 
     function leonAlert(error){
@@ -108,6 +118,11 @@
                 type = 'error'
                 title = 'ERROR'
                 text = 'Faltan Campos Importantes'
+                break
+            case 'fpasword':
+                type = 'error'
+                title = 'ERROR'
+                text = 'Error al Ingresar Credenciales de Acceso'
                 break
             default:
                 //cae aqui cuando es 200
