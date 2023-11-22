@@ -50,6 +50,7 @@
                     dataType: 'JSON',
                     success: function(result){
                         if(result.id){
+                            //dashboard involucra mantenedor perfiles, mantenedor noticias, inventario a nivel general
                             window.location.href = '/clinica/dashboard';
                         }else{
                             leonAlert(result);

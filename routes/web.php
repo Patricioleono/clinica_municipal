@@ -32,5 +32,9 @@ Route::controller(LoginController::class)->group(function() {
 });
 
 Route::controller(LoginController::class)->group(function() {
-    Route::get('/clinica/registroUsuario', 'registroUsuario');
+    Route::get('/clinica/registroUsuario', 'viewRegisterUser');
+});
+
+Route::controller(LoginController::class)->group(function() {
+    Route::post('/clinica/newUser', 'registerNewUser');
 });

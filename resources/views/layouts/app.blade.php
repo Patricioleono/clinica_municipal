@@ -159,6 +159,7 @@
 
 @yield('script')
 @yield('scriptLogin')
+@yield('scriptRegisterUser')
 
 </body>
 </html>
