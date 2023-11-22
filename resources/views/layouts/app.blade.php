@@ -27,6 +27,7 @@
 
 <!-- CLINICA LOGIN -->
 @yield('clincaLogin')
+@yield('registerUser')
 
 <!-- PAGINA PRINCIPAL -->
 @yield('header')
@@ -84,6 +85,7 @@
     }
 
     function leonAlert(error){
+        console.log(error);
         let type
         let title
         let text
@@ -123,6 +125,21 @@
                 type = 'error'
                 title = 'ERROR'
                 text = 'Error al Ingresar Credenciales de Acceso'
+                break
+            case 200 || 201:
+                type = 'success'
+                title = 'Proceso Exitoso'
+                text = 'Proceso completado correctamente'
+                break
+            case 404:
+                type = 'error'
+                title = 'ERROR '+error.status
+                text = error.message
+                break
+            case 401:
+                type = 'error'
+                title = 'ERROR '+error.status
+                text = error.message
                 break
             default:
                 //cae aqui cuando es 200

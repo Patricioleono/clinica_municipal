@@ -22,28 +22,35 @@ class LoginController extends Controller
     public function login(Request $request){
         $email = $request->post('email');
         $password = $request->post('password');
-
         $data = User::where('sis_usuario', $email)->get();
-    
-        if(count($data) == 0){
-            return response()->json(['message' => 'Usuario no encontrado'], 404);
-        }
 
+        if(count($data) == 0){
+            return response()->json(['status' => 404, 'message' => 'Usuario no Encontrado']);
+        }
+        
         if(Hash::check($password, $data[0]->sis_password)){
             $update = User::find($data[0]->id);
             $update->sis_tokenCreado = $this->apiToken;
             $update->save();
 
             $response = array(
-                'id' => $email[0]->id,
-                'token' => $update->sis_tokenCreado
+                'status' => 201,
+                'id' => $data[0]->id,
+                'token' => $update->sis_tokenCreado,
+                'fecha' => $data[0]->sis_tokenFecha
             );
     
             return response()->json($response, 201);
         }else{
-            return response()->json(['error' => 'no autorizado'], 401, []);
+            return response()->json(['status' => 401, 'message' => 'Usuario No Autorizado']);
         }
-
         
     }
+
+    public function registroUsuario(){
+        return view('register');
+
+    }
+
+    
 }
