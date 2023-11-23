@@ -131,6 +131,11 @@
                 title = 'Proceso Exitoso'
                 text = 'Proceso completado correctamente'
                 break
+            case 400:
+                type = 'error'
+                title = 'ERROR '+error.status
+                text = error.message
+                break
             case 404:
                 type = 'error'
                 title = 'ERROR '+error.status

@@ -34,6 +34,7 @@
         $('#completeName').focus();
 
         $("#createUser").click(function(e) {
+            bloquearPantalla();
             e.preventDefault();
 
             let completeName = $('#completeName').val();
@@ -54,7 +55,8 @@
                     },
                     dataType: 'JSON',
                     success: function(result){
-                        console.log(result);
+                        leonAlert(result);
+                        desbloquearPantalla();
                     }     
             });
         });

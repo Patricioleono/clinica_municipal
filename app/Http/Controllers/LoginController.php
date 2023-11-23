@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 
 class LoginController extends Controller
 {
@@ -39,6 +38,7 @@ class LoginController extends Controller
         if(Hash::check($password, $data[0]->sis_password)){
             $update = User::find($data[0]->id);
             $update->sis_tokenCreado = $this->apiToken;
+            $update->sis_tokenFecha = now();
             $update->save();
 
             $response = array(
@@ -61,15 +61,19 @@ class LoginController extends Controller
         if($validationFront['status'] !== '200'){
            return response()->json(['status' => 400]);
         }else{
-            $completeName = $request->post('completeName');
-            $newEmail = $request->post('newEmail');
-            $newPassword = $request->post('newPassword');
 
-            $request->validate([
-                'newPassword' => ['required'],
-                'newEmail' => ['required'],
-                'completeName' => ['required'],
-            ]);
+            if(User::where('sis_usuario', $request->post('newEmail')) !== 1){
+                return response()->json(['status' => 400,'message' => 'El Usuario ya Existe']);
+            }else{
+                $newUserPlatform = new User;
+                $newUserPlatform->sis_nombreCompleto = $request->post('completeName');
+                $newUserPlatform->sis_usuario = $request->post('newEmail');
+                $newUserPlatform->sis_password = Hash::make($request->post('newPassword'));
+                $newUserPlatform->sis_tokenCreado = $this->apiToken;
+                $newUserPlatform->save();
+                return response()->json(['status' => 200, 'message' => 'Usuario Registrado']);
+            }
+         
         }
         
     }
