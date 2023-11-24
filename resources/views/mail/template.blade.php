@@ -20,14 +20,6 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         Creado Con &#10084; Por <a href="https://patricio-leon.netlify.app/">Patricio León Ormazábal</a>
     </p>
 

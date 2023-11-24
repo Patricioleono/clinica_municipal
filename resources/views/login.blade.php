@@ -4,6 +4,8 @@
     <div class="container">
         <div class="abs-center">
             <form class="border p-3 form">
+                <h4 class="text-center">Ingreso de Usuario</h4>
+
                 <a class="navbar-brand me-5 align-center" href="" style="width: 10%; height: 110px">
                     <img src="../img/logoMuniS.png" alt="Logo Clinica" class="w-100" >
                 </a>
