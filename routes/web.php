@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,16 +26,13 @@ Route::controller(MailController::class)->group( function() {
 
 Route::controller(LoginController::class)->group(function() {
     Route::get('/clinica/login', 'index');
-});
-
-Route::controller(LoginController::class)->group(function() {
-    Route::post('/clinica/ingreso', 'login');
-});
-
-Route::controller(LoginController::class)->group(function() {
     Route::get('/clinica/registroUsuario', 'viewRegisterUser');
-});
 
-Route::controller(LoginController::class)->group(function() {
+    Route::post('/clinica/ingreso', 'login');
     Route::post('/clinica/newUser', 'registerNewUser');
 });
+
+Route::controller(DashboardController::class)->group(function() {
+    Route::get('/clinica/dashboard', 'index');
+});
+

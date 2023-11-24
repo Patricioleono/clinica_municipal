@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('sis_password');
             $table->string('sis_tokenCreado');
             $table->datetime('sis_tokenFecha');
+            $table->datetime('sis_tokenInsert');
+
         });
     }
 
