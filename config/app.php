@@ -168,6 +168,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,7 +184,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'JWTAuth' => \Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => \Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => \Tymon\JWTAuth\Facades\JWTFactory::class,
+        'DataTables' => \Yajra\DataTables\Facades\DataTables::class
     ])->toArray(),
 
 ];
