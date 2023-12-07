@@ -13,17 +13,9 @@
                         <div class="carousel-inner col-12">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
-                            <div class="carousel-item active">
-                                <img src="img/c-1.jpg" class="d-block w-100 rounded" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/c-2.jpg" class="d-block w-100 rounded" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/c-3.jpg" class="d-block w-100 rounded" alt="...">
+                            <div class="carousel-item active" style="height: 350px;">
+                                <img src="img/Banner.jpg" class="d-block w-100 rounded" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -47,7 +39,7 @@
                         </button>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button type="button" class="btn btn-outline-success fst-italic w-100">
+                        <button type="button" class="btn btn-outline-success fst-italic w-100" data-bs-toggle="modal" data-bs-target="#modificarHora" id="buttonModificarHora">
                             <i class="fa fa-pencil-square" aria-hidden="true"></i> Modificar Hora
                         </button>
                     </div>
@@ -71,57 +63,55 @@
             <div class="row bg-body-tertiary flex-nowrap overflow-auto mt-2">
                 <div class="card m-2 col-2 p-2">
                     <a href="">
-                        <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                        <img src="img/2.jpg" class="card-img-top" alt="...">
                     </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/1.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/3.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/4.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/5.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/6.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
                 <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
+                    <a href="">
+                        <img src="img/7.jpg" class="card-img-top" alt="...">
+                    </a>
                 </div>
 
-                <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
-                </div>
-
-                <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
-                </div>
-
-                <div class="card m-2 col-2 p-2">
-                    <img src="img/bannerPersonal.jpg" class="card-img-top" alt="...">
-                </div>
             </div>
             <!-- SERVICIOS REALIZADOS EN LA CLINICA -->
-            <div class="row mt-4 flex-nowrap overflow-auto">
+            <div class="row mt-4 flex-nowrap overflow-auto text-center">
 
                 <div class="card mb-3 col-3 m-1">
                     <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                            <img src="img/icon.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card-body">
-                                <h5 class="card-title">Consulta General</h5>
+                                <h5 class="card-title"> <i class="fa-solid fa-house-medical"></i> Consulta General</h5>
                             </div>
                         </div>
                     </div>
@@ -129,12 +119,9 @@
 
                 <div class="card mb-3 col-3 m-1 ">
                     <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                            <img src="img/icon.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card-body">
-                                <h5 class="card-title">Imagenologia</h5>
+                                <h5 class="card-title"><i class="fa-solid fa-x-ray"></i> Imagenologia</h5>
                             </div>
                         </div>
                     </div>
@@ -142,12 +129,9 @@
 
                 <div class="card mb-3 col-3 m-1">
                     <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                            <img src="img/icon.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card-body">
-                                <h5 class="card-title">Imagenologia</h5>
+                                <h5 class="card-title"><i class="fa-solid fa-puzzle-piece"></i> Sala de Estimulacion</h5>
                             </div>
                         </div>
                     </div>
@@ -155,25 +139,9 @@
 
                 <div class="card mb-3 col-3 m-1">
                     <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                            <img src="img/icon.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card-body">
-                                <h5 class="card-title">Imagenologia</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3 col-3 m-1">
-                    <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                            <img src="img/icon.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Imagenologia</h5>
+                                <h5 class="card-title"><i class="fa-solid fa-tooth"></i> Odontologia</h5>
                             </div>
                         </div>
                     </div>
@@ -184,34 +152,42 @@
             <div class="row mt-4 d-flex justify-content-center">
 
                 <div class="card border-dark mb-3 m-2 col-4" style="max-width: 19rem;">
-                    <div class="card-header mt-1">Header</div>
+                    <div class="card-header mt-1 text-center">Bacterias</div>
                     <div class="card-body">
-                        <h5 class="card-title">Dark card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title text-center">Enemigo natural</h5>
+                        <a href="https://cnnespanol.cnn.com/2023/12/06/ningun-antibiotico-funciono-asi-que-esta-mujer-recurrio-a-un-enemigo-natural-de-las-bacterias-para-salvar-la-vida-de-su-marido/">
+                            <img src="img/noticias/bacteria.jfif" alt="noticica">
+                        </a>
                     </div>
                 </div>
 
                 <div class="card border-dark mb-3 m-2 col-4" style="max-width: 19rem;">
-                    <div class="card-header mt-1">Header</div>
+                    <div class="card-header mt-1 text-center">Clima</div>
                     <div class="card-body">
-                        <h5 class="card-title">Dark card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title text-center">Protegete del Sol</h5>
+                        <a href="https://www.biobiochile.cl/noticias/salud-y-bienestar/cuerpo/2023/12/06/ante-inminente-ola-de-calor-en-regiones-que-recomendaciones-seguir-para-capear-temperaturas-extremas.shtml">
+                            <img src="img/noticias/clima.jpeg" alt="noticica">
+                        </a>
+                      </div>
+                </div>
+
+                <div class="card border-dark mb-3 m-2 col-4" style="max-width: 19rem;">
+                    <div class="card-header mt-1 text-center">Salud</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Recuerda Descansar</h5>
+                        <a href="https://www.latercera.com/tendencias/noticia/asi-se-practica-el-inemuri-la-potente-siesta-japonesa-que-te-dara-un-golpe-de-energia-en-solo-unos-minutos/W7CSEWPG7RB23NECX6OBAE6IBA/">
+                            <img src="img/noticias/salud.jpg" alt="">
+                        </a>
                     </div>
                 </div>
 
                 <div class="card border-dark mb-3 m-2 col-4" style="max-width: 19rem;">
-                    <div class="card-header mt-1">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Dark card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-
-                <div class="card border-dark mb-3 m-2 col-4" style="max-width: 19rem;">
-                    <div class="card-header mt-1">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Dark card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div class="card-header mt-1 text-center">Bienestar</div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Cuidados Personales</h5>
+                        <a href="https://salud.nih.gov/recursos-de-salud/nih-noticias-de-salud/el-cuidado-del-cancer-se-vuelve-personal">
+                            <img src="img/noticias/bienestar.png" alt="">
+                        </a>
                     </div>
                 </div>
 
@@ -221,7 +197,7 @@
 @endsection
 
 @section('modals')
-    <!-- Modal -->
+    <!-- Modal Reservar Hora-->
     <div class="modal fade" id="reservarHora" tabindex="-1" aria-labelledby="reservarHora" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -299,6 +275,65 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Modificar Hora-->
+    <div class="modal fade" id="modificarHora" tabindex="-1" aria-labelledby="modificarHora" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modificarHora">Solicitud Modificar Hora Medica</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputModificarNombre" class="form-label">Nombre Completo:</label>
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="inputNombre" placeholder="EJ: Patricio Leon Ormazabal" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputModificarCorreo" class="form-label">Correo:</label>
+                                    <input type="email" class="form-control" id="inputCorreo" aria-describedby="inputCorreo" placeholder="EJ: informatica@chilechico.cl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputModificarTelefono" class="form-label">Telefono:</label>
+                                    <input type="number" class="form-control" id="inputTelefono" aria-describedby="inputTelefono" placeholder="EJ: +56937213799" required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-10">
+                                <div class="mb-3">
+                                    <label for="inputModificarComentario" class="form-label">Motivo Modificacion:</label>
+                                    <textarea class="form-control" aria-label="With textarea" id="inputComentario"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="buttonCerrarModal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="buttonEnviarSolicitud">Solicitar Modificacion Hora Medica</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('footer')
@@ -307,15 +342,11 @@
 
 @section('script')
     <script>
-
         $(document).ready(function(){
-            $('#buttonReservarHora').on('click', function(){
-                limpiarForm();
-            })
+            $('#buttonReservarHora').on('click', function(){ limpiarForm();  })
 
             $('#buttonEnviarSolicitud').on('click', function(){
                 bloquearPantalla();
-
 
                 let nombre = $('#inputNombre').val();
                 let correo = $('#inputCorreo').val();
@@ -330,7 +361,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/sendMail',
+                    url: baseClinica + '/sendMail',
                     data: {
                             "_token": "{{ csrf_token() }}",
                             nombre: nombre,
@@ -351,22 +382,32 @@
                 });
             })
 
-            function limpiarForm(){
-               let inputNombre = $('#inputNombre').val();
-               let inputCorreo = $('#inputCorreo').val();
-               let inputEspecialidad = $('#inputEspecialidad').val();
-               let inputFecha = $('#inputFecha').val();
-               let inputComentario = $('#inputComentario').val();
+            $('#buttonEnviarSolicitud').on('click', function(event){
+                event.preventDefault();
 
-               if(inputNombre.length > 0 || inputCorreo.length > 0 || inputEspecialidad !== 0 || inputFecha.length > 0 || inputComentario.length > 0){
-                   $('#inputNombre').val('');
-                   $('#inputCorreo').val('');
-                   $('#inputEspecialidad').val(0);
-                   $('#inputFecha').val('');
-                   $('#inputComentario').val('');
-               }
-            }
+                bloquearPantalla();
+                let nombre = $('#inputModificarNombre').val();
+                let correo = $('#inputModificarCorreo').val();
+                let telefono = $('#inputModificarTelefono').val();
+                let comentario = $('#inputModificarComentario').val();
+                $.ajax({
+                    type: 'POST',
+                    url: baseClinica + '/sendModifiMail',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        nombre: nombre,
+                        correo: correo,
+                        telefono: telefoo,
+                        comentario: comentario,
+                    },
+                    dataType: 'JSON',
+                    success: function(result){
 
+                        //desbloaquearPantalla();
+                        //leonAlert(result);
+                    }
+                });
+            });
 
         });
     </script>

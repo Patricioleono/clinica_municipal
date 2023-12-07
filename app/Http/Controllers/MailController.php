@@ -36,7 +36,8 @@ class MailController extends Controller
                     'fecha' => $fecha,
                     'hora' => $hora,
                     'descripcion' => $descripcion,
-                    'telefono' => $telefono
+                    'telefono' => $telefono,
+                    'tipo' => 'solicitar'
                 );
                 return $this->sendMail($dataTomarHora);
             }
@@ -45,6 +46,10 @@ class MailController extends Controller
             return $error;
         }
 
+    }
+
+    public function modifiMailProcess(Request $request) {
+        
     }
 
     protected function sendMail($data){
@@ -56,5 +61,6 @@ class MailController extends Controller
         Log::info('CORREO ENVIADO');
         return response()->json(['status' => 200]);
     }
+
 
 }

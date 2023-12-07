@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::controller(MailController::class)->group( function() {
     Route::post('/sendMail', 'mailProcess');
+    Route::post('/sendModifiMail','modifiMailProcess');
 });
 
 Route::controller(LoginController::class)->group(function() {

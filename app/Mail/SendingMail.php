@@ -27,9 +27,15 @@ class SendingMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Solicitud Hora Medica',
-        );
+        if($this->newHour['tipo'] == 'solicitar'){
+            return new Envelope(
+                subject: 'Solicitud Hora Medica',
+            );
+        }else if($this->newHour['tipo'] == 'modificar'){
+            return new Envelope(
+                subject: 'Solicito Modificar Hora Medica',
+            );
+        }
     }
 
     /**
@@ -37,19 +43,35 @@ class SendingMail extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            //ruta, View/carpetaDestino/nombreArchivo
-            view: 'mail.template',
-            with: [
-                    'nombre' => $this->newHour['nombre'],
-                    'correo' => $this->newHour['correo'],
-                    'especialidad' => $this->newHour['especialidad'],
-                    'fecha' => $this->newHour['fecha'],
-                    'hora' => $this->newHour['hora'],
-                    'descripcion' => $this->newHour['descripcion'],
-                    'telefono' => $this->newHour['telefono']
-            ]
-        );
+        if($this->newHour['tipo'] == 'solicitar'){
+            return new Content(
+                //recuerda que las vistas funcionan con blade
+                view: 'mail.template',
+                with: [
+                        'nombre' => $this->newHour['nombre'],
+                        'correo' => $this->newHour['correo'],
+                        'especialidad' => $this->newHour['especialidad'],
+                        'fecha' => $this->newHour['fecha'],
+                        'hora' => $this->newHour['hora'],
+                        'descripcion' => $this->newHour['descripcion'],
+                        'telefono' => $this->newHour['telefono']
+                ]
+            );
+        }else if($this->newHour['tipo'] == 'modificar'){
+            return new Content(
+                view:'mail.template',
+                with: [
+                        'nombre' => $this->newHour['nombre'],
+                        'correo' => $this->newHour['correo'],
+                        'especialidad' => $this->newHour['especialidad'],
+                        'fecha' => $this->newHour['fecha'],
+                        'hora' => $this->newHour['hora'],
+                        'descripcion' => $this->newHour['descripcion'],
+                        'telefono' => $this->newHour['telefono']
+                ]
+            );
+        }
+        
     }
 
     /**
