@@ -45,6 +45,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     var regeX = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    var baseClinica = "{{ url('/') }}";
 
     function bloquearPantalla(){
         $('#bloquea').removeClass('d-none')
@@ -163,6 +164,23 @@
             icon: `${type}`
         });
     }
+
+    function limpiarForm(){
+        let nombre = $('#inputNombre').val();
+        let correo = $('#inputCorreo').val();
+        let especialidad = $('#inputEspecialidad').val();
+        let fechaCompleta = $('#inputFecha').val();
+        let descripcion = $('#inputComentario').val();
+        let telefono = $('#inputTelefono').val();
+
+            if(inputNombre.length > 0 || inputCorreo.length > 0 || inputEspecialidad !== 0 || inputFecha.length > 0 || inputComentario.length > 0){
+                $('#inputNombre').val('');
+                $('#inputCorreo').val('');
+                $('#inputEspecialidad').val(0);
+                $('#inputFecha').val('');
+                $('#inputComentario').val('');
+            }
+        }
 </script>
 
 @yield('script')

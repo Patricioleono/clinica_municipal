@@ -9,24 +9,12 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Servicios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                        <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                        <hr>
-                        <li><a class="dropdown-item" href="#">Servicio 3</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Especialidades
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                        <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                        <hr>
-                        <li><a class="dropdown-item" href="#">Servicio 3</a></li>
+                        <li><a class="dropdown-item" href="#">Salud Oral / Dental</a></li>
+                        <li><a class="dropdown-item" href="#">Imagenologia </a></li>
+                        <li><a class="dropdown-item" href="#">Fonoaudiologia</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -34,16 +22,9 @@
                         Informacion Importante
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                        <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                        <hr>
-                        <li><a class="dropdown-item" href="#">Servicio 3</a></li>
+                        <li><a class="dropdown-item" href="#">Mision / Vision</a></li>
+                        <li><a class="dropdown-item" href="#">Historia</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="/clinica/login" role="button">
-                        Ingreso Administracion Clinica
-                    </a>
                 </li>
             </ul>
         </div>

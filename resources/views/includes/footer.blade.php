@@ -36,13 +36,13 @@
             <h6>Redes Sociales</h6>
             <ul class="list-group list-group-flush mt-2">
                 <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://www.facebook.com/ilustremunicipalidadchilechico" target="_blank">
-                    <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+                    <i class="fa-brands fa-square-facebook"></i> Facebook
                 </a>
                 <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://twitter.com/MuniChileChico" target="_blank">
-                    <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter
+                    <i class="fa-brands fa-square-x-twitter"></i> Twitter
                 </a>
                 <a class="link-offset-2 link-offset-3-hover link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover text-secondary mt-1" href="https://www.instagram.com/municipalidadchilechico/" target="_blank">
-                    <i class="fa fa-instagram" aria-hidden="true"></i> Instagram
+                    <i class="fa-brands fa-square-instagram"></i> Instagram
                 </a>
             </ul>
 
