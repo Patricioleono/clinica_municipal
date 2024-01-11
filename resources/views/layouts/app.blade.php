@@ -130,7 +130,7 @@
                 title = 'ERROR'
                 text = 'Error al Ingresar Credenciales de Acceso'
                 break
-            case 200 || 201:
+            case 201:
                 type = 'success'
                 title = 'Proceso Exitoso'
                 text = 'Proceso completado correctamente'
